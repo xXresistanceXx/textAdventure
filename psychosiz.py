@@ -56,9 +56,9 @@ def start_screen():
     slowPrint("\nWelcome to the resistance...")
     name = (input("Choose a Name> "))
 
-    print(f'''\nWelcome {name}, you playin' this game on your own risk. 
-You've been warned!''')
-    slowPrint("Let the trip begin...")
+    slowPrint(f'''\nConstructor: Welcome {name}, you playin' this game on your own risk. 
+You've been warned!''','cyan')
+    slowPrint("Let the trip begin...",'cyan')
 
 start_screen()
 t.sleep(4)
@@ -76,13 +76,13 @@ while True:
     if answer == "aye":
         slowPrint(f'''Unknown: Sounds good {name}. Let's meet up in an private IRC.
 Unknown: Here is the password for the chat: cfeec4e68965f7c633cdf9846e10f656dbb12a2a2663fef33c12018f80127eb0 
-Unknown: Of course you have to decrypt it. What did you think?''')
-        input("The Constructor: Continue with Enter if you got the hash")
+Unknown: Of course you have to de-hash it. What did you think?''')
+        input("Constructor: Continue with Enter if you got the hash")
         break
     elif answer == "no":
         slowPrint("Unknown: I knew you don't have what it takes. Watch ya!",'red') 
         quit()
-    else: slowPrint("You have to type aye or no")
+    else: slowPrint("Constructor: You have to type aye or no",'cyan')
 
 clear_screen()
 t.sleep(2)
@@ -111,28 +111,29 @@ while True:
         player_input = input("Enter the password for the Chat: ")
 
         if check_password(player_input):
-            print("Password correct! You now have access to the chat.")
+            slowPrint("Password correct! You now have access to the chat.",'greeny')
             break
         else:
-            print("Password incorrect. Access denied. Try again.")
+            slowPrint("Password incorrect. Access denied. Try again.",'red')
 
 
 slowPrint(f"Unknown: Well, welcome to the room {name}.",'greeny')
 slowPrint("Unknown: What do you wanna know? Is it something about me or nail into the coffin and dive into the Mission?",'greeny')
 while True:
-     choice = input("Unknown: For Infos about me, type 'you' . For the Mission just 'mission'. ")
-     if choice == "you":
-          slowPrint(f"{name}: About You. I need some Answers. Who are you?",'greeny')
-          slowPrint(f"Unknown: Call me Resident {name}",'greeny')
-          slowPrint('''Resident: I was a security employee in the IT department of a large tech company. 
+    choice = input("Unknown: For Infos about me, type 'you'. For the Mission, type 'mission'. ").lower()
+    
+    if choice == "you":
+        slowPrint(f"{name}: About You. I need some answers. Who are you?",'greeny')
+        slowPrint(f"Unknown: Call me Resident {name}",'greeny')
+        slowPrint('''Resident: I was a security employee in the IT department of a large tech company. 
 When I found out what they were doing, I could no longer reconcile it with myself and my moral values. 
 Now I'm sort of... a kind of freelancer ;) .''','greeny')
-
-     choice = input("Now about the mission?")     
-     if choice == "mission":
+        
+    
+    if choice == "mission":
             slowPrint(f'''First {name}, you have to understand that this is no joke! I know you feel like in a game but this is serious.
 I was working for a well known, big company, 1 year ago. 
-As I found out they use the datas to manipulate you - not in the way we know already.
+As I found out they use the data to manipulate you - not in the way we know already.
 No, they now use AI to create personal profiles. 
 They are starting to store each person individually in a storage system. It's a kind of object orientation. 
 It starts with continent, country and goes on to your house and your habits. Quantum computing already exists. 
@@ -142,12 +143,45 @@ People think they are revealing something or bringing a truth to light,
 but even conspiracies and the theories are a part of the agenda. 
 Youpoop, Goggle, TikTik... they all wanted and unwanted parts of a web, that is hard to see through. 
 They're laughing their heads off because we're driving each other crazy and nobody knows what's true and what's false or fiction anymore.''','greeny')
-            break
-     
-     else:
-          slowPrint("Type 'you' or 'mission")
+    
+            
+    elif choice == "you":
+        choice2 = input("Resident: For the Mission, type 'mission'. ").lower()       
 
-slowPrint("To be continued...",'yellow')
+        if choice2 == "mission":
+                slowPrint(f'''First {name}, you have to understand that this is no joke! I know you feel like in a game but this is serious.
+I was working for a well known, big company, 1 year ago. 
+As I found out they use the data to manipulate you - not in the way we know already.
+No, they now use AI to create personal profiles. 
+They are starting to store each person individually in a storage system. It's a kind of object orientation. 
+It starts with continent, country and goes on to your house and your habits. Quantum computing already exists. 
+For a while now and it's used... misused exactly for this. 
+But it's only available to the military and specialized companies. Everything has already been corrupted. 
+People think they are revealing something or bringing a truth to light, 
+but even conspiracies and the theories are a part of the agenda. 
+Youpoop, Goggle, TikTik... they all wanted and unwanted parts of a web, that is hard to see through. 
+They're laughing their heads off because we're driving each other crazy and nobody knows what's true and what's false or fiction anymore.''','greeny')
+
+        break
+
+    if choice == "mission":
+        choice2 = input("Unknown: For the unecessary Infos about me, type 'you'. ").lower()       
+
+        if choice2 == "you":
+             slowPrint(f"{name}: About You. I need some answers. Who are you?")
+        slowPrint(f"Unknown: Call me Resident {name}")
+        slowPrint('''Resident: I was a security employee in the IT department of a large tech company. 
+When I found out what they were doing, I could no longer reconcile it with myself and my moral values. 
+Now I'm sort of... a kind of freelancer ;) .''')
+        
+        break
+
+    else:
+        print("Please type 'you' or 'mission'.")
+    
+        
+
+slowPrint("\nTo be continued...",'yellow')
 
 t.sleep(2)     
 beta_art = pyfiglet.figlet_format ("Thank you! from Psychosiz",font='crawford')
